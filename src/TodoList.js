@@ -19,8 +19,11 @@ const TodoList = () => {
     ));
 
     return (
-        <div>
+        <div className="mainbody">
             <NewTodoForm createTodo={add}/>
+            <div>
+                <h2 className="TodoList-title">My Todo List:</h2>
+            </div>
             <ul className="Todolist">
                 {todoComponents}
             </ul>
