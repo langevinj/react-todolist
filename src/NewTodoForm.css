@@ -1,0 +1,16 @@
+.NewTodoForm {
+    background-color: rgb(175, 175, 175);
+    width: 20rem;
+    padding: 5px;
+}
+
+#newTodoButton{
+    margin-top: 10px;
+}
+
+.NewTaskLabel {
+    display: block;
+    margin: 10px;
+    color:white;
+    font-weight: bold;
+}
