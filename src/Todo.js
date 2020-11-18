@@ -6,7 +6,7 @@ function Todo({id, task, handleRemove}) {
     return (
         <li className="Todo-item">
             <div className="Todo-task">{task}</div>
-            <button onClick={remove} clasName="Todo-remove">X</button>
+            <button onClick={remove} className="Todo-remove">X</button>
         </li>
     );   
 }

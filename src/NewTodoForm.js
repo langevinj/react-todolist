@@ -24,7 +24,7 @@ function NewTodoForm({createTodo}) {
         <div>
             <form onSubmit={handleSubmit} className="NewTodoForm"> 
                 <div>
-                    <label for htmlFor="task" className="NewTaskLabel">New Task:</label>
+                    <label htmlFor="task" className="NewTaskLabel">New Task:</label>
                     <textarea
                         onChange={handleChange}
                         id="task"
