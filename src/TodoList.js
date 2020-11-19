@@ -19,7 +19,7 @@ const TodoList = () => {
         setTodos(todos.map(todo => editCorrect(todo, targetTodo))
     ));
 
-    //make the edit form for the element visible
+    //togglethe edit form visibility
     function toggleEditForm(evt) {
         if(evt.target.parentNode.className === "Todo-item"){
             if (evt.target.parentNode.lastChild.style.display === "none") {
@@ -34,8 +34,6 @@ const TodoList = () => {
                 evt.target.parentNode.style.display = "none"
             }
         }
-        
-        
     }
 
     //edit the targetted todo
@@ -47,8 +45,6 @@ const TodoList = () => {
         }
         return todo
     }
-
-    
 
     const todoComponents = todos.map(todo => (
         <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id}/>
