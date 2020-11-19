@@ -1,1 +1,1 @@
-Simple React app of a Todo List with testing
+Todolist React app with the capabilities of added, deleting, editting, and marking items complete. Items are saved to LocalStorage on refresh.
