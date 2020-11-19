@@ -4,8 +4,16 @@ import NewTodoForm from './NewTodoForm'
 import Todo from './Todo'
 import EditTodoForm from './EditTodoForm'
 
+let loadedTodos =[];
+
+//set the todos from local storage
+window.onload = (event) => {
+    loadedTodos = JSON.parse(window.localStorage.getItem('tasks'));
+}
+
 const TodoList = () => {
-    const [todos, setTodos] = useState([])
+    //load the current todos
+    const [todos, setTodos] = useState(JSON.parse(window.localStorage.getItem('tasks')))
 
     const add = todoObj => {
         setTodos(todos => [...todos, todoObj]);
@@ -32,16 +40,6 @@ const TodoList = () => {
         }
         return todo
     }
-
-    // function check (evt){
-    //     // evt.preventDefault();
-    //     if(evt.target.nextElementSibling.className === "Todo-task"){
-    //         evt.target.nextElementSibling.className += " strike"
-    //     } else {
-    //         evt.target.nextElementSibling.className = "Todo-task"
-    //     }
-        
-    // }
 
     //togglethe edit form visibility
     function toggleEditForm(evt) {
@@ -73,6 +71,11 @@ const TodoList = () => {
     const todoComponents = todos.map(todo => (
         <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id} handleCheck={check}  completed={todo.completed}/>
     ));
+    
+    //before page refresh, save the current todos to local storage
+    window.onbeforeunload = () => {
+        window.localStorage.setItem('tasks', JSON.stringify(todos))
+    }
 
     return (
         <div className="mainbody">
@@ -86,6 +89,5 @@ const TodoList = () => {
         </div>
     )
 }
-
 
 export default TodoList;
