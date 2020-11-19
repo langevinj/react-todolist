@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './TodoList.css'
 import NewTodoForm from './NewTodoForm'
 import Todo from './Todo'
+import EditTodoForm from './EditTodoForm'
 
 const TodoList = () => {
     const [todos, setTodos] = useState([])
@@ -14,8 +15,34 @@ const TodoList = () => {
         setTodos(todos => todos.filter(todo => todo.id !== id));
     };
 
+    const edit = (targetTodo) => (
+        setTodos(todos.map(todo => editCorrect(todo, targetTodo))
+    ));
+
+    //make the edit form for the element visible
+    function toggleEditForm(evt) {
+        if(evt.target.parentNode.lastChild.style.display === "none"){
+            evt.target.parentNode.lastChild.style.display = "block"
+        } else {
+            evt.target.parentNode.lastChild.style.display = "none"
+        }
+        
+    }
+
+    //edit the targetted todo
+    function editCorrect (todo, targetTodo){
+        if(todo.id === targetTodo.id){
+            let copyTodo = Object.assign({}, todo)
+            copyTodo.task = targetTodo.task
+            return copyTodo
+        }
+        return todo
+    }
+
+    
+
     const todoComponents = todos.map(todo => (
-        <Todo id={todo.id} task={todo.task} handleRemove={remove}/>
+        <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id}/>
     ));
 
     return (
