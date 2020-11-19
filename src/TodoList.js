@@ -19,6 +19,16 @@ const TodoList = () => {
         setTodos(todos.map(todo => editCorrect(todo, targetTodo))
     ));
 
+    function check (evt){
+        // evt.preventDefault();
+        if(evt.target.nextElementSibling.className === "Todo-task"){
+            evt.target.nextElementSibling.className += " strike"
+        } else {
+            evt.target.nextElementSibling.className = "Todo-task"
+        }
+        
+    }
+
     //togglethe edit form visibility
     function toggleEditForm(evt) {
         if(evt.target.parentNode.className === "Todo-item"){
@@ -47,7 +57,7 @@ const TodoList = () => {
     }
 
     const todoComponents = todos.map(todo => (
-        <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id}/>
+        <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id} handleCheck={check}/>
     ));
 
     return (
