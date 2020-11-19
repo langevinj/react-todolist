@@ -21,11 +21,20 @@ const TodoList = () => {
 
     //make the edit form for the element visible
     function toggleEditForm(evt) {
-        if(evt.target.parentNode.lastChild.style.display === "none"){
-            evt.target.parentNode.lastChild.style.display = "block"
+        if(evt.target.parentNode.className === "Todo-item"){
+            if (evt.target.parentNode.lastChild.style.display === "none") {
+                evt.target.parentNode.lastChild.style.display = "block"
+            } else {
+                evt.target.parentNode.lastChild.style.display = "none"
+            }
         } else {
-            evt.target.parentNode.lastChild.style.display = "none"
+            if (evt.target.parentNode.style.display === "none") {
+                evt.target.parentNode.style.display = "block"
+            } else {
+                evt.target.parentNode.style.display = "none"
+            }
         }
+        
         
     }
 

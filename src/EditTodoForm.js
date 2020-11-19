@@ -21,7 +21,7 @@ function EditTodoForm({editTodo, task, id, toggleForm}) {
     };
 
     return(
-        <div style={{ display: "none" }} key={`edit-${id}`}>
+        <div style={{ display: "none" }} key={`edit-${id}`} className="Edit-div">
             <form onSubmit={handleSubmit} className="EditTodoForm">
                 <div>
                     <label htmlFor="task" className="EditTaskLabel">Edit Task:</label>
