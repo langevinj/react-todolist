@@ -19,15 +19,29 @@ const TodoList = () => {
         setTodos(todos.map(todo => editCorrect(todo, targetTodo))
     ));
 
-    function check (evt){
-        // evt.preventDefault();
-        if(evt.target.nextElementSibling.className === "Todo-task"){
-            evt.target.nextElementSibling.className += " strike"
-        } else {
-            evt.target.nextElementSibling.className = "Todo-task"
-        }
-        
+    const check = id => {
+        setTodos(todos.map(todo => checkIfComplete(todo, id)))
     }
+
+    //check a newly completed todo
+    function checkIfComplete(todo, id){
+        if(todo.id === id){
+            let copyTodo = Object.assign({}, todo)
+            copyTodo.completed = true
+            return copyTodo
+        }
+        return todo
+    }
+
+    // function check (evt){
+    //     // evt.preventDefault();
+    //     if(evt.target.nextElementSibling.className === "Todo-task"){
+    //         evt.target.nextElementSibling.className += " strike"
+    //     } else {
+    //         evt.target.nextElementSibling.className = "Todo-task"
+    //     }
+        
+    // }
 
     //togglethe edit form visibility
     function toggleEditForm(evt) {
@@ -57,7 +71,7 @@ const TodoList = () => {
     }
 
     const todoComponents = todos.map(todo => (
-        <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id} handleCheck={check}/>
+        <Todo id={todo.id} task={todo.task} handleRemove={remove} handleToggle={toggleEditForm} handleEdit={edit} key={todo.id} handleCheck={check}  completed={todo.completed}/>
     ));
 
     return (

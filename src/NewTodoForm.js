@@ -4,7 +4,8 @@ import {v4 as uuid} from "uuid"
 
 function NewTodoForm({createTodo}) {
     const [formData, setFormData] = useState({
-        task: ""
+        task: "",
+        completed: false
     });
 
     const handleChange = evt => {
